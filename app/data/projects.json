@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Logikeep a book keeping Web App",
+    "article": "This is a book keeping website called logikeep, Logikeep helps businesses keep a proper book-keeping of their business transactions. meticulously crafted with ReactJs,and Tailwind CSS Redux toolkit RestApi.",
+    "thumbnail": "/portfolio-website.png",
+    "alt": "bookeeping website",
+    "hostedUrl": "https://logikeep.africa/",
+    "githubUrl": "https://github.com/Oretugaadewale"
+  },
+  {
+    "title": "EattyFood meal delivery Web App",
+    "article": "The smart 365-days-per-year food subscription that will make you eat healthy again. Tailored to your personal tastes and nutritional needs meticulously crafted with Javascript, and CSS.",
+    "thumbnail": "/portfolio-website.png",
+    "alt": "Meal website",
+    "hostedUrl": "https://eattyfood.netlify.app/",
+    "githubUrl": "https://github.com/Oretugaadewale/eattyfood"
+  },
+  {
+    "title": "Eshopafrica Logistics Web App that ship from china and Usa to the world",
+    "article": "Buy And Ship From Your Favorites Stores In US, China and Have Them Delivered To Your Doorstep In Nigeria or any country in the world. meticulously crafted with ReactJs, tailwind, Redux toolkit.",
+    "thumbnail": "/portfolio-website.png",
+    "alt": "Logistics website",
+    "hostedUrl": "https://eshopafrica.co/",
+    "githubUrl": "https://github.com/Oretugaadewale/"
+  },
+  {
+    "title": "Myafrimall logistics Web App that ship from Nigeria to over 300 countries",
+    "article": "Ship from Nigeria to over 300 countries. meticulously crafted with ReactJs, tailwind, Redux toolkit.",
+    "thumbnail": "/portfolio-website.png",
+    "alt": "Logistics website",
+    "hostedUrl": "https://myafrimall.com.ng/",
+    "githubUrl": "https://github.com/Oretugaadewale/"
+  },
+  {
+    "title": "OguName is a web-based project to archive personal names within the ogu culture",
+    "article": "As captured in the logo. 'name' is 'Yinkọ' (or'oyin') in the gun language of ogu people of the west Africa coast. The project documents the meanings of and the roots of the names in English language. meticulously crafted with ReactJs, tailwind, Redux toolkit.",
+    "thumbnail": "/portfolio-website.png",
+    "alt": "Logistics website",
+    "hostedUrl": "https://oguname.com/",
+    "githubUrl": "https://github.com/Oretugaadewale/"
+  }
+]
