@@ -1,14 +1,12 @@
 import { FaEnvelope } from "react-icons/fa";
+import { profile } from "../data/profile";
 
 export default function Email(): JSX.Element {
   return (
     <div className="flex items-center gap-1 hover:underline">
       <FaEnvelope className="w-4 h-4 sm:w-5 sm:h-5" />
-      <a
-        href="mailto:oretugafolorunso@gmail.com"
-        className="text-sm sm:text-base"
-      >
-       oretugafolorunso@gmail.com
+      <a href={`mailto:${profile.email}`} className="text-sm sm:text-base">
+        {profile.email}
       </a>
     </div>
   );

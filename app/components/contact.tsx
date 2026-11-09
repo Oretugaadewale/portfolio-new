@@ -5,9 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { validationSchema } from "../utils/validation";
 
-const EMAILJS_SERVICE_ID = process.env.EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = process.env.EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY;
+import { profile } from "../data/profile";
+
+// This form runs in the browser, so Next.js only exposes these values when they
+// start with NEXT_PUBLIC_. Set them in Netlify: Site settings > Environment variables.
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
 interface ContactFormValues {
   name: string;
@@ -28,15 +32,23 @@ export default function Contact() {
         from_phone: values.phone,
         message: values.message,
       };
-      if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
-        await emailjs.send(
-          EMAILJS_SERVICE_ID,
-          EMAILJS_TEMPLATE_ID,
-          templateParams,
-          EMAILJS_PUBLIC_KEY
+      if (!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY)) {
+        // Email sending is not configured: open the visitor's email app
+        // instead of pretending the message was sent.
+        const subject = encodeURIComponent(`Portfolio enquiry from ${values.name}`);
+        const body = encodeURIComponent(
+          `${values.message}\n\nName: ${values.name}\nEmail: ${values.email}\nPhone: ${values.phone}`
         );
+        window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+        return;
       }
-      toast.success("Email sent successfully!", {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      toast.success("Message sent. I'll reply within 24 hours.", {
         position: toast.POSITION.TOP_RIGHT,
       });
       formikHelpers.resetForm({
@@ -49,7 +61,7 @@ export default function Contact() {
       });
     } catch (error) {
       console.error("Failed to send email.", error);
-      toast.error("Failed to send email.", {
+      toast.error(`Message failed to send. Please email ${profile.email}.`, {
         position: toast.POSITION.TOP_RIGHT,
       });
     }
@@ -111,7 +123,7 @@ export default function Contact() {
                 name="phone"
                 type="text"
                 autoComplete="off"
-                placeholder="Enter Your Phone Number"
+                placeholder="Phone number (optional)"
                 className="block bg-seasalt w-full h-6 rounded outline-0 text-sm text-dim-gray"
               />
             </div>

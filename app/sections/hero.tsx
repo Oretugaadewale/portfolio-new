@@ -1,51 +1,42 @@
-"use client";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import Sidebar from "../components/sidebar";
+import { profile } from "../data/profile";
 
 export default function Hero(): JSX.Element {
-  const [h1Text, setH1Text] = useState<string>("");
-  const [charIndex, setCharIndex] = useState<number>(0);
-  const [showH2Text, setShowH2Text] = useState<boolean>(false);
-
-  const originalH1Text: string = "Hey, I'm Adewale Oretuga";
-
-  useEffect(() => {
-    const h1IntervalId: NodeJS.Timeout = setInterval(() => {
-      if (charIndex < originalH1Text.length) {
-        setH1Text((prevText) => prevText + originalH1Text.charAt(charIndex));
-        setCharIndex((prevIndex) => prevIndex + 1);
-      } else {
-        clearInterval(h1IntervalId);
-      }
-    }, 100);
-
-    const h2TimeoutId: NodeJS.Timeout = setTimeout(() => {
-      setShowH2Text(true);
-    }, 500);
-
-    return () => {
-      clearInterval(h1IntervalId);
-      clearTimeout(h2TimeoutId);
-    };
-  }, [charIndex]);
-
   return (
-    <section className="bg-hero-pattern h-screen px-2 flex flex-col items-center justify-center">
+    <section className="bg-hero-pattern min-h-[calc(100vh-4.5rem)] px-4 py-16 flex flex-col items-center justify-center">
       <Sidebar />
-      <article className="text-center grid gap-20">
-        <h1 className="text-3xl sm:text-5xl font-extrabold">{h1Text}</h1>
-        {showH2Text && (
-          <h2 className="text-2xl sm:text-3xl font-semibold sm:font-bold">
-            A Frontend Web Developer
-          </h2>
-        )}
-        <div className="flex justify-center">
+      <article className="text-center grid gap-6 sm:gap-8 max-w-3xl">
+        <p className="text-sm sm:text-base font-semibold uppercase tracking-widest text-violet-blue">
+          {profile.title} | {profile.stack}
+        </p>
+        <h1 className="text-3xl sm:text-5xl font-extrabold">
+          Hey, I&apos;m {profile.name}.
+        </h1>
+        <h2 className="text-lg sm:text-2xl font-medium text-night/80 leading-relaxed">
+          I build fast, reliable web apps that real businesses run on: fintech
+          dashboards, logistics platforms and customer-facing websites, from
+          Figma to production.
+        </h2>
+        <p className="text-sm sm:text-base text-dim-gray">{profile.location}</p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
           <Link
-            href={`/about`}
-            className="px-10 sm:px-12 py-2 sm:py-3 bg-violet-blue rounded uppercase font-medium sm:font-bold text-white animate-bounce"
+            href="/projects"
+            className="px-8 sm:px-10 py-3 bg-violet-blue rounded uppercase font-bold text-white hover:scale-105"
           >
-            more about me
+            see my work
+          </Link>
+          <Link
+            href="/about"
+            className="px-8 sm:px-10 py-3 border border-violet-blue rounded uppercase font-bold text-violet-blue hover:scale-105"
+          >
+            experience
+          </Link>
+          <Link
+            href="/#contacts"
+            className="px-8 sm:px-10 py-3 border border-violet-blue rounded uppercase font-bold text-violet-blue hover:scale-105"
+          >
+            contact me
           </Link>
         </div>
       </article>

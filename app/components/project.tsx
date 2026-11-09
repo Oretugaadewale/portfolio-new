@@ -1,60 +1,62 @@
 import Image from "next/image";
-import { ExternalLinkButton as LiveDemoButton } from "../components/button";
-import { ExternalLinkButton as GitHubButton } from "../components/button";
+import type { Project as ProjectData } from "../data/profile";
 
-interface ProjectProps {
-  title: string;
-  article: string;
-  thumbnail: string;
-  alt: string;
-  view: string;
-  hostedUrl: string;
-  github: string;
-  githubUrl: string;
+const primary =
+  "px-6 sm:px-8 py-2 sm:py-3 rounded font-bold hover:scale-105 bg-violet-blue text-white";
+const secondary =
+  "px-6 sm:px-8 py-2 sm:py-3 rounded font-bold hover:scale-105 border border-violet-blue text-violet-blue";
+
+function Placeholder({ title }: { title: string }) {
+  return (
+    <div className="aspect-[16/10] w-full rounded bg-gradient-to-br from-violet-blue to-night flex items-center justify-center p-6">
+      <span className="text-white text-2xl sm:text-3xl font-extrabold text-center">{title}</span>
+    </div>
+  );
 }
 
-export default function Project({
-  title,
-  article,
-  thumbnail,
-  alt,
-  view,
-  hostedUrl,
-  github,
-  githubUrl,
-}: ProjectProps) {
+export default function Project({ title, tag, summary, stack, thumbnail, liveUrl, githubUrl }: ProjectData) {
   return (
-    <div className="grid sm:grid-cols-2 gap-4 sm:gap-8 mb-16">
-      <div className="w-fit h-fit border rounded shadow-lg hover:cursor-pointer hover:scale-105">
-        <Image
-          width={500}
-          height={500}
-          className="h-full w-full object-fill"
-          src={thumbnail}
-          alt={alt}
-        />
+    <div className="grid sm:grid-cols-2 gap-6 sm:gap-10 mb-16 max-w-5xl">
+      <div className="w-full h-fit border rounded shadow-lg overflow-hidden">
+        {thumbnail ? (
+          <Image
+            width={1000}
+            height={625}
+            className="h-full w-full object-cover"
+            src={thumbnail}
+            alt={`Screenshot of ${title}`}
+          />
+        ) : (
+          <Placeholder title={title} />
+        )}
       </div>
-      <div className="w-fit h-fit">
-        <h4 className="text-xl font-bold mb-3 sm:mb-5">{title}</h4>
-        <article className="text-night text-justify leading-6 grid gap-2 mb-8 sm:mb-10">
-          {article}
-        </article>
-        <div className="flex items-center justify-center sm:justify-start gap-5">
-          <LiveDemoButton
-            title={`${view}`}
-            url={`${hostedUrl}`}
-            backgroundColor="#3943B7"
-            color="#FFF"
-            border="none"
-          />
-          <GitHubButton
-            title={`${github}`}
-            url={`${githubUrl}`}
-            backgroundColor="none"
-            color="#3943B7"
-            border="1px solid #3943B7"
-          />
-        </div>
+      <div className="w-full h-fit">
+        <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-violet-blue mb-2">
+          {tag}
+        </p>
+        <h4 className="text-xl sm:text-2xl font-bold mb-3">{title}</h4>
+        <p className="text-night leading-7 mb-4">{summary}</p>
+        <ul className="flex flex-wrap gap-2 mb-6">
+          {stack.map((item) => (
+            <li key={item} className="text-xs sm:text-sm px-2 py-1 rounded bg-anti-flash-white border">
+              {item}
+            </li>
+          ))}
+        </ul>
+        {(liveUrl || githubUrl) && (
+          <div className="flex items-center justify-center sm:justify-start gap-4">
+            {liveUrl && (
+              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className={primary}>
+                VIEW LIVE
+              </a>
+            )}
+            {githubUrl && (
+              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className={secondary}>
+                CODE
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

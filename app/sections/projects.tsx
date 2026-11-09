@@ -1,7 +1,6 @@
-import ArrowDown from "../components/arrowDown";
 import Project from "../components/project";
 import Underline from "../components/underline";
-import projects from "../data/projects.json";
+import { projects } from "../data/profile";
 
 export default function Projects() {
   return (
@@ -9,35 +8,18 @@ export default function Projects() {
       <header className="flex flex-col items-center gap-3 sm:gap-5 mb-10 sm:mb-14">
         <h2 className="text-2xl sm:text-4xl font-bold uppercase">projects</h2>
         <Underline />
-        <h3 className="text-lg sm:text-xl font-medium sm:font-semibold text-center">
-          Below are some of my sample projects
-        </h3>
-        <ArrowDown />
+        <p className="text-lg sm:text-xl font-medium text-center max-w-2xl">
+          Production work for real businesses in fintech, logistics, travel and
+          SaaS. Client code is private, so most projects link to the live product.
+        </p>
       </header>
       <ul className="flex flex-col items-center">
-        {projects.map(
-          (
-            { title, article, thumbnail, alt, hostedUrl, githubUrl },
-            index: number
-          ) => (
-            <li key={index}>
-              <Project
-                title={title}
-                article={article}
-                thumbnail={thumbnail}
-                alt={alt}
-                view="VIEW"
-                hostedUrl={hostedUrl}
-                github="GITHUB"
-                githubUrl={githubUrl}
-              />
-            </li>
-          )
-        )}
+        {projects.map((project) => (
+          <li key={project.title}>
+            <Project {...project} />
+          </li>
+        ))}
       </ul>
-      <div className="flex justify-center text-center text-lg sm:text-xl font-semibold uppercase">
-        Stay tuned for upcoming projects that will be added to this section
-      </div>
     </section>
   );
 }

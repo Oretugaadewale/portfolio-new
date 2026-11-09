@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SocialMedia as links } from "../data/socials";
 import Contact from "./contact";
 import Email from "./email";
@@ -32,11 +31,11 @@ export default function Footer(): JSX.Element {
             </li>
           </ul>
           <ul className="flex items-center justify-center gap-6">
-            {links.map(({ link, icon }, index: number) => (
-              <li key={index}>
-                <Link href={link} target="_blank">
+            {links.map(({ label, link, icon }) => (
+              <li key={label}>
+                <a href={link} target="_blank" rel="noopener noreferrer" aria-label={label}>
                   {icon}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -50,7 +49,7 @@ export default function Footer(): JSX.Element {
         </p>
         <p>
           <strong className="text-xs sm:text-sm font-light">
-            Adewale Oretuga 
+            Adewale Oretuga
           </strong>
         </p>
       </div>
