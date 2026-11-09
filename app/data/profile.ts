@@ -149,6 +149,7 @@ export const projects: Project[] = [
     summary:
       "Company website with interactive tools that turn visitors into leads: a visa eligibility checker, a visa processing time tracker and a consultation outcome preview. I also audited Row Level Security across 10 Supabase tables and flagged an open policy on customer bookings.",
     stack: ["Next.js", "TypeScript", "Supabase"],
+    thumbnail: "/avalora.png",
     liveUrl: "https://avaloracontinent.com/",
   },
   {

@@ -45,17 +45,19 @@ export default function Header() {
         >
           {isOpen ? <FaTimes className="w-6 h-6" /> : <FaBars className="w-6 h-6" />}
         </button>
-        {isOpen && (
-          <ul className="sm:hidden bg-seasalt w-screen h-fit py-7 shadow-lg absolute top-16 right-0 flex flex-col justify-center items-center gap-5">
-            {links.map(({ label, href }) => (
-              <li key={label} onClick={() => setOpen(false)}>
-                <Link href={href} className="font-semibold uppercase hover:text-violet-blue">
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul
+          className={`sm:hidden bg-seasalt w-screen py-7 shadow-lg absolute top-16 right-0 flex flex-col justify-center items-center gap-5 transition-all duration-200 ease-in-out overflow-hidden ${
+            isOpen ? "opacity-100 pointer-events-auto max-h-96" : "opacity-0 pointer-events-none max-h-0 py-0"
+          }`}
+        >
+          {links.map(({ label, href }) => (
+            <li key={label} onClick={() => setOpen(false)}>
+              <Link href={href} className="font-semibold uppercase hover:text-violet-blue">
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </nav>
     </header>
   );
