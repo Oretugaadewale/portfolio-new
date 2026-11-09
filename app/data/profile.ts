@@ -15,7 +15,7 @@ export const profile = {
   x: "https://twitter.com/AdewaleOretuga",
   // Export your CV as a PDF, save it as public/Adewale-Oretuga-CV.pdf,
   // then set this to "/Adewale-Oretuga-CV.pdf". Left empty, the button stays hidden.
-  cvUrl: "",
+  cvUrl: "/Adewale-Oretuga-CV.pdf",
 };
 
 export const summary: string[] = [
