@@ -137,11 +137,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "AFMweca Super Admin Dashboard",
+    title: "AFMweca Digital Wallet",
     tag: "Fintech, private client project",
     summary:
-      "A 9-module admin panel for a canteen and outlet digital wallet platform: users, roles and permissions, workflows, departments, outlets, wallets, reconciliation and audit logs. Built from Figma with no external UI library. During a security review I caught wallets being credited from client-side data and designed server-side Paystack verification with idempotency checks.",
+      "A digital wallet for canteens and outlets: customers top up and pay outlets straight from their wallet (shown). Behind it, a 9-module super admin dashboard covers users, roles and permissions, workflows, departments, outlets, wallets, reconciliation and audit logs, built from Figma with no external UI library. During a security review I caught wallets being credited from client-side data and designed server-side Paystack verification with idempotency checks.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Paystack"],
+    thumbnail: "/afmweca.png",
   },
   {
     title: "Avalora Continents",
