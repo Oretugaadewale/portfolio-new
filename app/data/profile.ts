@@ -117,7 +117,7 @@ export const skillGroups: { label: string; items: string[] }[] = [
   },
   {
     label: "Backend and data",
-    items: ["Supabase (PostgreSQL, Auth, RLS)", "REST APIs", "Paystack", "PHP / Laravel", "MySQL"],
+    items: ["Supabase (PostgreSQL, Auth, RLS)", "REST APIs", "Paystack", "MySQL"],
   },
   {
     label: "Tools",
