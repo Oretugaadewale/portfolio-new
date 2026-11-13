@@ -137,6 +137,16 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Waybill",
+    tag: "Logistics, open source, in progress",
+    summary:
+      "Shipment tracking for cross-border logistics between Nigeria, the US, the UK and Canada, inspired by running operations at eShopAfrica. Customers enter a tracking number and see the route, a six-stage progress bar and every scan in local time, designed like a printed waybill. Built in public in six stages, with Supabase, an admin dashboard and Paystack payments to come. Tested with Vitest and React Testing Library, with CI on every push.",
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vitest"],
+    thumbnail: "/waybill.png",
+    liveUrl: "https://waybill-dusky.vercel.app",
+    githubUrl: "https://github.com/Oretugaadewale/waybill",
+  },
+  {
     title: "AFMweca Digital Wallet",
     tag: "Fintech, private client project",
     summary:
